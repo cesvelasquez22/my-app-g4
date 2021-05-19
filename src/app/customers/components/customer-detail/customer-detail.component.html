@@ -1,0 +1,45 @@
+<div class="form-container">
+    <div class="form-content">
+        <mat-card>
+            <mat-card-title>
+                Información del Cliente
+            </mat-card-title>
+
+            <form [formGroup]="customerForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>Código</mat-label>
+                    <input formControlName="codigo" matInput type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre completo</mat-label>
+                    <input formControlName="nombre" matInput type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Estado civil</mat-label>
+                    <mat-select formControlName="estadoCivil">
+                        <mat-option value="Soltero">Soltero</mat-option>
+                        <mat-option value="Casado">Casado</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input (dateInput)="inputBirthDate($event)" formControlName="fechaNacimiento" matInput
+                        [matDatepicker]="birthDate" [disabled]="true">
+                    <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
+                    <mat-datepicker #birthDate disabled="false"></mat-datepicker>
+                </mat-form-field>
+
+                <mat-slide-toggle formControlName="activo">Activo: {{ Activo }}</mat-slide-toggle>
+
+                <mat-card-actions class="form-actions">
+                    <button mat-stroked-button color="primary" routerLink="..">Cancelar</button>
+                    <button *ngIf="customerUidPath" mat-stroked-button color="warn" (click)="deleteCustomer()">Eliminar cliente</button>
+                    <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+</div>

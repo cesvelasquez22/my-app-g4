@@ -1,7 +1,8 @@
 export interface Customer {
+    uid?: string;
     codigo: number;
     nombre: string;
     estadoCivil: string;
-    fechaNacimiento: Date;
+    fechaNacimiento: firebase.default.firestore.Timestamp;
     activo: boolean;
 }
